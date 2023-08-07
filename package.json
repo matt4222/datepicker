@@ -1,6 +1,6 @@
 {
   "name": "mirabon-datepicker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -12,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "mirabon-utils": "^0.1.4",
     "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "mirabon-utils": "^0.1.4"
   }
 }
