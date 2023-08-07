@@ -176,8 +176,8 @@ export class DatePicker
     {
         const td = ev.target as HTMLTableCellElement;
 
-        const month = (parseInt(td.dataset.month!) + 1).toString().padStart(2, "0");
-        const day = td.dataset.day!.padStart(2, "0");
+        const month = (parseInt(td.dataset.month!) + 1).toString(); //.padStart(2, "0");
+        const day = td.dataset.day!; //.padStart(2, "0");
 
         this.input_calendar.value = `${td.dataset.year}-${month}-${day}`;
         this.hide();
