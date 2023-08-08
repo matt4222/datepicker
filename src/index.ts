@@ -14,6 +14,16 @@ export type DATEPICKER_EVENT =
     date: Date;
 }
 
+/**
+ * @author matt
+ * @brief return the version
+ * @returns
+ */
+export const version = () =>
+{
+    return "Version 0.1.2";
+}
+
 export class DatePicker
 {
     private container: HTMLDivElement;

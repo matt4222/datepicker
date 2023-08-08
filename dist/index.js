@@ -1,4 +1,12 @@
 import { dateFormat, getDay, getMonth, querySelector } from "mirabon-utils";
+/**
+ * @author matt
+ * @brief return the version
+ * @returns
+ */
+export const version = () => {
+    return "Version 0.1.2";
+};
 export class DatePicker {
     constructor(container, options) {
         this.div_nav = null;

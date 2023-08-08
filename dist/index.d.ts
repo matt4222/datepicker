@@ -8,6 +8,12 @@ export type DATEPICKER_OPTIONS = {
 export type DATEPICKER_EVENT = {
     date: Date;
 };
+/**
+ * @author matt
+ * @brief return the version
+ * @returns
+ */
+export declare const version: () => string;
 export declare class DatePicker {
     private container;
     private input_calendar;
