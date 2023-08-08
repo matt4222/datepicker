@@ -1,6 +1,6 @@
 {
   "name": "mirabon-datepicker",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "datepicker",
   "type": "module",
   "main": "dist/index.js",
