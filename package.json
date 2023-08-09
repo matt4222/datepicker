@@ -1,6 +1,6 @@
 {
   "name": "mirabon-datepicker",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "datepicker",
   "type": "module",
   "main": "dist/mirabon-datepicker.js",
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
+    "build": "tsc && mv src/mirabon-datepicker.css dist/",
     "watch": "tsc -w"
   },
   "keywords": [],

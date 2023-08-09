@@ -1,0 +1,87 @@
+.date_picker .input_calendar {
+    color: #000;
+}
+
+.date_picker .div_calendar {
+    position: absolute;
+    display: none;
+    border: 1px solid #000;
+    background-color: #fcfcfc;
+}
+
+.date_picker .show {
+    display: block;
+}
+
+.date_picker .div_nav {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr auto 1fr 2fr 1fr;
+    gap: 5px;
+    align-items: center;
+    font-size: 0.7em;
+    padding: 5px;
+}
+
+.date_picker .btn_prev
+{
+    /*border: 1px solid black;*/
+    width: 16px;
+    height: 16px;
+    background: no-repeat center url(../images/prev.svg);
+    background-size: 16px;
+    cursor: pointer;
+}
+
+.date_picker .btn_next
+{
+    /*border: 1px solid black;*/
+    width: 16px;
+    height: 16px;
+    background: no-repeat center url(../images/next.svg);
+    background-size: 16px;
+    cursor: pointer;
+}
+
+.date_picker .div_month, .date_picker .div_year
+{
+    text-align: center;
+    cursor: pointer;
+}
+
+.date_picker table {
+    border-collapse: collapse;
+    empty-cells: show;
+    width: 100%;
+    font-size: 0.8em;
+}
+
+.date_picker table th {
+    padding: 2px 2px;
+    background-color: #acacac;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    text-align: center;
+}
+
+.date_picker table td.valid_day
+{
+    padding: 2px 2px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.date_picker table td.event_day
+{
+    background-color: #afa;
+}
+
+.date_picker table td.empty_day
+{
+    background-color: #ddd;
+}
+
+.date_picker table td.valid_day:hover
+{
+    background-color: #ddd;
+}
+
