@@ -1,9 +1,9 @@
 {
   "name": "mirabon-datepicker",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "datepicker",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/mirabon-datepicker.js",
   "homepage": "https://github.com/matt4222/datepicker",
   "repository": {
     "type": "git",
@@ -21,9 +21,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "mirabon-utils": "^0.1.9",
     "typescript": "^5.1.6"
-  },
-  "dependencies": {
-    "mirabon-utils": "^0.1.4"
   }
 }
