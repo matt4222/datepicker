@@ -34,5 +34,5 @@ export declare class DatePicker {
     private format_output;
     private get_event;
     addEvent(dp_event: DATEPICKER_EVENT): void;
-    get date(): string;
+    get_date(format: string): string;
 }

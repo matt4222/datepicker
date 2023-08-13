@@ -5,7 +5,7 @@ import { dateFormat, getDay, getMonth, querySelector } from "mirabon-utils";
  * @returns
  */
 export const version = () => {
-    return "mirabon-datepicker version : 0.1.6";
+    return "mirabon-datepicker version : 0.1.8";
 };
 export class DatePicker {
     constructor(container, options) {
@@ -21,24 +21,25 @@ export class DatePicker {
         this.input_calendar.classList.add("input_calendar");
         this.input_calendar.readOnly = true;
         this.input_calendar.addEventListener("click", this.toogle.bind(this));
-        if ("size" in this.options && options.size)
-            this.input_calendar.size = options.size;
-        if ("class" in this.options && this.options.class)
-            this.input_calendar.classList.add(this.options.class.join(","));
         /* create calendar */
         this.div_calendar = document.createElement("div");
         this.container.append(this.div_calendar);
         this.div_calendar.classList.add("div_calendar");
+        if ("size" in this.options && options.size)
+            this.input_calendar.size = options.size;
+        if ("class" in this.options && this.options.class)
+            this.input_calendar.classList.add(this.options.class.join(","));
         let date = new Date();
-        if ("date" in options && options.date)
-            date = options.date;
+        if ("date" in this.options && this.options.date)
+            date = this.options.date;
+        this.input_calendar.value = dateFormat(date, "Y-m-d");
     }
     render(date) {
         this.div_calendar.innerHTML = "";
         this.div_nav = document.createElement("div");
         this.div_calendar.append(this.div_nav);
         this.div_nav.classList.add("div_nav");
-        const top = this.input_calendar.offsetTop + this.input_calendar.offsetHeight + 3;
+        const top = this.input_calendar.offsetTop + this.input_calendar.offsetHeight;
         const left = this.input_calendar.offsetLeft;
         this.div_calendar.style.top = top + "px";
         this.div_calendar.style.left = left + "px";
@@ -50,7 +51,7 @@ export class DatePicker {
         this.div_nav.append(div_month);
         div_month.classList.add("div_month");
         div_month.innerHTML = getMonth(date.getMonth()).toUpperCase();
-        div_month.addEventListener("click", () => { console.log("ok"); });
+        div_month.addEventListener("click", () => { console.log("not yet implemeted"); });
         const div_next_month = document.createElement("div");
         this.div_nav.append(div_next_month);
         div_next_month.classList.add("btn_next");
@@ -65,7 +66,7 @@ export class DatePicker {
         this.div_nav.append(div_year);
         div_year.classList.add("div_year");
         div_year.innerHTML = date.getFullYear().toString();
-        div_year.addEventListener("click", () => { console.log("ok"); });
+        div_year.addEventListener("click", () => { console.log("not yet implemeted"); });
         const div_next_year = document.createElement("div");
         this.div_nav.append(div_next_year);
         div_next_year.classList.add("btn_next");
@@ -112,18 +113,18 @@ export class DatePicker {
             num += 1;
             tmp_date = new Date(today.getFullYear(), today.getMonth(), num);
         }
-        for (const dp_event of this.dp_events) {
-            console.log(dp_event);
-        }
     }
     cell_click(ev) {
         const td = ev.target;
-        const month = (parseInt(td.dataset.month) + 1).toString(); //.padStart(2, "0");
-        const day = td.dataset.day; //.padStart(2, "0");
+        const month = (parseInt(td.dataset.month) + 1).toString().padStart(2, "0");
+        const day = td.dataset.day.padStart(2, "0");
         this.input_calendar.value = `${td.dataset.year}-${month}-${day}`;
         this.hide();
         if ("callback" in this.options && this.options.callback) {
-            this.options.callback(this.format_output());
+            let format = "Y-m-d";
+            if ("output_format" in this.options && this.options.output_format)
+                format = this.options.output_format;
+            this.options.callback(this.format_output(format));
         }
     }
     prev_month_click(date) {
@@ -163,11 +164,9 @@ export class DatePicker {
         }
         this.hide();
     }
-    format_output() {
+    format_output(format) {
         let res = this.input_calendar.value;
-        if ("output_format" in this.options && this.options.output_format) {
-            res = dateFormat(new Date(this.input_calendar.value), this.options.output_format);
-        }
+        res = dateFormat(new Date(this.input_calendar.value), format);
         return res;
     }
     get_event(date) {
@@ -180,9 +179,8 @@ export class DatePicker {
     }
     addEvent(dp_event) {
         this.dp_events.push(dp_event);
-        console.log(this.dp_events);
     }
-    get date() {
-        return this.format_output();
+    get_date(format) {
+        return this.format_output(format);
     }
 }
