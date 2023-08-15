@@ -5,7 +5,7 @@ import { dateFormat, getDay, getMonth, querySelector } from "mirabon-utils";
  * @returns
  */
 export const version = () => {
-    return "mirabon-datepicker version : 0.1.8";
+    return "mirabon-datepicker version : 0.1.9";
 };
 export class DatePicker {
     constructor(container, options) {
@@ -29,10 +29,8 @@ export class DatePicker {
             this.input_calendar.size = options.size;
         if ("class" in this.options && this.options.class)
             this.input_calendar.classList.add(this.options.class.join(","));
-        let date = new Date();
         if ("date" in this.options && this.options.date)
-            date = this.options.date;
-        this.input_calendar.value = dateFormat(date, "Y-m-d");
+            this.input_calendar.value = dateFormat(this.options.date, "Y-m-d");
     }
     render(date) {
         this.div_calendar.innerHTML = "";

@@ -9,10 +9,10 @@ export type DATEPICKER_OPTIONS =
         class?: string[];
     };
 
-export type DATEPICKER_EVENT = 
-{
-    date: Date;
-}
+export type DATEPICKER_EVENT =
+    {
+        date: Date;
+    };
 
 /**
  * @author matt
@@ -21,8 +21,8 @@ export type DATEPICKER_EVENT =
  */
 export const version = () =>
 {
-    return "mirabon-datepicker version : 0.1.8";
-}
+    return "mirabon-datepicker version : 0.1.9";
+};
 
 export class DatePicker
 {
@@ -59,11 +59,8 @@ export class DatePicker
         if ("class" in this.options && this.options.class)
             this.input_calendar.classList.add(this.options.class.join(","));
 
-        let date = new Date();
-        if("date" in this.options && this.options.date)
-            date = this.options.date;
-
-        this.input_calendar.value = dateFormat(date, "Y-m-d");
+        if ("date" in this.options && this.options.date)
+            this.input_calendar.value = dateFormat(this.options.date, "Y-m-d");
     }
 
     private render(date: Date)
@@ -190,8 +187,8 @@ export class DatePicker
         if ("callback" in this.options && this.options.callback)
         {
             let format = "Y-m-d";
-            
-            if("output_format" in this.options && this.options.output_format)
+
+            if ("output_format" in this.options && this.options.output_format)
                 format = this.options.output_format;
 
             this.options.callback(this.format_output(format));
